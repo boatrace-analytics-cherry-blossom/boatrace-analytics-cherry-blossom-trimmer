@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.3', '7.4']
+        php-version: ['7.3', '7.4', '8.0']
 
     steps:
     - name: Setup php ${{ matrix.php-version }}
@@ -35,5 +35,5 @@ jobs:
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        composer global require php-coveralls/php-coveralls
+        composer global require php-coveralls/php-coveralls:^2.0 symfony/console:^5.0
         php-coveralls --coverage_clover=build/logs/clover.xml -v
